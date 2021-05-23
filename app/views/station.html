@@ -1,0 +1,54 @@
+#{extends 'main.html' /}
+#{set title:'Station' /}
+#{menu id:"station"/}
+
+<section class="ui segment">
+    <h2 class="ui header">
+        ${station.name}
+    </h2>
+
+    <div class="ui five cards">
+        <div class="card">
+            <div class="extra">
+                <h2 class="header">${station.name}</h2>
+            </div>
+        </div>
+        <div class="card">
+            <div class="extra">
+                <h2 class="header">Weather</h2>
+                <h3 class="header">${station.latestWeather}</h3>
+            </div>
+        </div>
+        <div class="card">
+            <div class="extra">
+                <h2 class="header">Temp</h2>
+                <h3 class="header">${station.celsius} C</h3>
+                <h3 class="header">${station.farenheit} F</h3>
+            </div>
+        </div>
+        <div class="card">
+            <div class="extra">
+                <h2 class="header">Wind</h2>
+                <h3 class="header">${station.latestWindSpeed} bft</h3>
+                <h3 class="header">${station.windCompass}</h3>
+                <h3 class="header">${station.windChill}</h3>
+            </div>
+        </div>
+        <div class="card">
+            <div class="extra">
+                <h2 class="header">Pressure</h2>
+                <h3 class="header">${station.showPressure} hpa</h3>
+            </div>
+        </div>
+
+        #{list items:station.readings, as:'reading'}
+        <table class="ui table">
+        <tbody>
+        </tbody>
+            #{/list}
+
+        </table>
+        #{listreadings station:station/}
+        #{addreading station:station/}
+    </div>
+</section>
